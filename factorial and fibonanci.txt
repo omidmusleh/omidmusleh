@@ -1,0 +1,30 @@
+# factorial with recursion
+def fact(num):
+    if num == 1:
+        return 1
+    else:
+        return num * fact(num - 1)
+print(fact(5))
+
+_____________________________________
+
+# fibonancci with recursion
+def fib(num,a = 0, b = 1,v = 0):
+    if num == 0:
+        return 0
+    else:
+        print(a,end=" ")
+        v += a
+        a , b = b , a + b
+    fib(num - 1,a,b,v)
+fib(5)
+______________________________________
+
+#sequenc of natural number with recusion
+def range(num):
+    if num == 0:
+        return 0
+    if num > 0:
+        print(num)
+        range(num - 1)
+range(5)

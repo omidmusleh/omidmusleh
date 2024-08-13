@@ -1,0 +1,812 @@
+basic class and object exercises
+
+1,2:
+class person:
+    def attributes(self,name,age):
+        print("Name is:",name,"| Age is:",age)
+        self.name = name
+    def greeting(self):
+        print("Welcome! ",self.name)
+p = person()
+p.attributes("Omid",20)
+p.greeting()
+
+3:
+class Car:
+    def detail(self,make,model,year):
+        print("car make:",make,"| car model:",model,"| generat year:",year)
+car = Car()
+car.detail("toyota","camry",2020)
+
+4:
+class Circle:
+    def __init__(self,radius):
+        self.radius = radius
+    def compute_area(self):
+        return (3.14 * self.radius ** 2)
+circle1 = Circle(5)
+area = circle1.compute_area()
+print("The circle area is:",area)
+
+5:
+class Rectangle:
+    def __init__(self,lenght,width):
+        self.lenght = lenght
+        self.width = width
+    def compute_area(self):
+        return self.lenght * self.width
+rect = Rectangle(5,3)
+area = rect.compute_area()
+print("the rectangle area is:",area)
+
+
+inheritance and polymorphism exercises
+6:
+class Animal:
+    def speak(self):
+        print("this is the animal sound.")
+class Dog(Animal):
+    def speak(self):
+        print("the dog speak is bark")
+class Cat(Animal):
+    def speak(self):
+        print("the cat speak is meow")
+dog = Dog()
+cat = Cat()
+dog.speak()
+cat.speak()
+
+7:
+class Shape:
+    def area(self):
+        print("this is the shape area.")
+class Square(Shape):
+    def area(self,side):
+        print("the square area is:",side * side)
+class Tringle(Shape):
+    def area(self,base,height):
+        print("the tringle area is:",(base * height)/2)
+
+square = Square()
+square.area(4)
+tringle = Tringle()
+tringle.area(4,6)
+
+8:
+class Employee:
+    def __init__(self,name,salary):
+        self.name = name
+        self.salary = salary
+class Manager(Employee):
+    def __init__(self,department,name,salary):
+        super().__init__(name,salary)
+        self.department = department
+    def disply(self):
+        print(self.department,"Department",self.name,"| salary :", self.salary)
+ma = Manager("English","Ashraf Azad",10000)
+ma.disply()
+
+9:
+class Vehicle:
+    def Drive(self):
+        print("this drive method in vehicle class.")
+class Bike(Vehicle):
+    def Drive(self):
+        print("Riding the bike!")
+class Truck(Vehicle):
+    def Drive(self):
+        print("Driving the truck!")
+bike = Bike()
+bike.Drive()
+truck = Truck()
+truck.Drive()
+
+10:
+class Bird:
+    def Fly(self):
+        pass
+class Eagle(Bird):
+    def Fly(self):
+        print("Eagle can fly.")
+class Penguin(Bird):
+    def Fly(self):
+        print("penguin cannot fly.")
+eagle = Eagle()
+eagle.Fly()
+penguin = Penguin()
+penguin.Fly()
+
+11:
+class Account:
+    def __init__(self,initial_balance = 0):
+        self.__balance = initial_balance
+    def deposit(self,amount):
+        if amount > 0:
+            self.__balance += amount
+            print("deposite amount:",amount)
+        else:
+            print("can be positive!")
+    def withdraw(self,amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+            print("with drawn:",amount)
+        else:
+            print("not exist enough amount")
+    def get_balance(self):
+        return self.__balance
+account = Account(1000)
+account.deposit(200)
+print(account.get_balance())
+account.withdraw(200)
+print(account.get_balance())
+
+12:
+class Book:
+    def __init__(self,title,author,pages):
+        self.__title = title
+        self.__author = author
+        self.__pages = pages
+    def get_title(self):
+        return self.__title
+    def get_author(self):
+        return self.__author
+    def get_pages(self):
+        return self.__pages
+    def set_title(self,title):
+        self.__title = title
+    def set_author(self,author):
+        self.__author = author
+    def set_pages(self,pages):
+        if pages > 0:
+            self.__pages = pages
+        else:
+            print("pages can be positive!")
+    def public(self,):
+        print(f"title: {self.__title}",f"\nauthor: {self.__author}",f"\npages: {self.__pages}")
+book = Book("database","ali",200)
+book.set_pages(170)
+book.set_title("programming")
+book.set_author("Mohammad Omid Musleh")
+book.public()
+
+13:
+class Laptop:
+    def __init__(self,Brand,Model,Price):
+        self.__brand = Brand
+        self.__model = Model
+        self.__price = Price
+    def Discount(self,discount):
+        if 0 <= discount <= 100:
+            discount_amount = self.__price * (discount/100)
+            print("discount amount : ",discount_amount)
+        else:
+            print("discount can be between 0 to 100!")
+    def disply(self):
+        print("Brand  ", "Model  ", "Price")
+        print(self.__brand,"| ",self.__model,"| ",self.__price)
+
+lap = Laptop("dell","xps 15",300)
+lap.disply()
+
+14:
+class Bankaccount:
+    def __init__(self,account_number,balance):
+        self.__account_number = account_number
+        self.__balance = balance
+    def deposit(self,amount):
+        if amount > 0:
+            self.__balance += amount
+        else:
+            print("amount can be positive!")
+    def withdrawn(self,amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("not exist enough money!")
+    def check(self):
+        print("Your Balance is:",self.__balance)
+
+account = Bankaccount(2324,3000)
+account.deposit(2000)
+account.withdrawn(1000)
+account.check()
+
+15:
+class Student:
+    def __init__(self,name,grade,age):
+        self.__name = name
+        self.__grade = grade
+        self.__age = age
+    def get_name(self):
+        return self.__name
+    def get_grade(self):
+        return self.__grade
+    def get_age(self):
+        return self.__age
+    def set_name(self,name):
+        self.__name = name
+    def set_grade(self,grade):
+        self.__grade = grade
+    def set_age(self,age):
+        self.__age = age
+    def show_detail(self):
+        print("Name:",self.__name,"| Grade:",self.__grade,
+	"| Age:",self.__age)
+
+stu = Student("Omid","bacaloria",20)
+stu.show_detail()
+
+16:
+class Library:
+    def __init__(self,name):
+        self.name = name
+        self.books = []
+    def add_book(self,book_name):
+        self.books.append(book_name)
+    def remove_book(self,book_name):
+        self.books.remove(book_name)
+    def show_books(self):
+        return self.books
+lib = Library("Omid Library")
+lib.add_book("database")
+lib.add_book("programmig")
+lib.add_book("nezame eteqady islam")
+lib.add_book("searat alnabi")
+lib.add_book("descrete mathematic")
+lib.add_book("tarikh maaser")
+lib.remove_book("tarikh maaser")
+print(lib.show_books())
+
+17:
+class School:
+    def __init__(self,name):
+        self.__name = name
+        self.__students = []
+    def add_student(self,stu_name):
+        self.__students.append(stu_name)
+        print("succesfully added!")
+    def remove_student(self,stu_name):
+        self.__students.remove(stu_name)
+        print("succesfully removed in list!")
+    def show_students(self):
+        return self.__students
+sch = School("GHAZI HIGH SCHOOL")
+sch.add_student("Omid")
+sch.add_student("Emal")
+sch.add_student("Elaham")
+print(sch.show_students())
+
+18:
+class Team:
+    def __init__(self,name):
+        self.__name = name
+        self.__members = []
+    def add_member(self,mem_name):
+        self.__members.append(mem_name)
+        print("succesfully added!")
+    def remove_member(self,mem_name):
+        self.__members.remove(mem_name)
+        print("succesfully removed from list")
+    def show_members(self):
+        return self.__members
+team1 = Team("Ahmadi")
+team1.add_member("Ali")
+team1.add_member("mohammad omid")
+team1.add_member("mohammad ashraf")
+print(team1.show_members())
+
+19:
+class Company:
+    def __init__(self,name):
+        self.__name = name
+        self.__employees = []
+    def add_emp(self,emp_name):
+        self.__employees.append(emp_name)
+        print("succesfully added!")
+    def remove_emp(self,emp_name):
+        self.__employees.append(emp_name)
+        print("succesfully removed!")
+    def show_employees(self):
+        return self.__employees
+Alokozay_company = Company("Alokozay")
+Alokozay_company.add_emp("Haroon")
+Alokozay_company.add_emp("Salim")
+print(Alokozay_company.show_employees())
+
+20:
+class Zoo:
+    def __init__(self,name):
+        self.__name = name
+        self.__animals = []
+    def add_animal(self,anim_name):
+        self.__animals.append(anim_name)
+        print("succesfully added!")
+    def remove_animal(self,anim_name):
+        self.__animals.remove(anim_name)
+        print("succesfully removed!")
+    def show_animals(self):
+        return self.__animals
+zoo1 = Zoo("Kabul")
+zoo1.add_animal("Lion")
+zoo1.add_animal("Monkey")
+zoo1.add_animal("Bear")
+print(zoo1.show_animals())
+
+21:
+class FileManager:
+    def Read_file(self,file_path):
+        with open(file_path,"r") as file:
+            data = file.read()
+            print(data)
+    def Write_file(self,file_path,content):
+        with open(file_path,"w") as file:
+            data = file.write(content)
+            print(data)
+
+fir = FileManager()
+fir.Read_file("C:\\Users\\PREMIER OMPUTER\\Desktop\\
+PycharmProjects\\programming homework\\honai.txt")
+fir.Write_file("C:\\Users\\PREMIER OMPUTER\\Desktop\\
+Omid.text","assalamo alikom mohammad omid musleh welcome to our program")
+
+22:
+class Log:
+    def write_error_messege(self,file_path,file_name,error_messege):
+        with open(file_path + "\\" + file_name + ".txt","a") as file:
+            file.write(error_messege)
+            print("succesfully creat error file messege!")
+error1 = Log()
+error1.write_error_messege("C:\\Users\\PREMIER OMPUTER\\
+Desktop","error messege","This is Error messege!\n")
+
+23:
+class Configur_file:
+    def read_file(self,file_path):
+        self.file_path = file_path
+        with open(file_path,'r') as file:
+            self.data = file.read()
+    def setting(self,content,k,new_value):
+        content = self.data
+
+        analyze = content.split(maxsplit=12)
+        for equal in analyze:
+            if equal == "=":
+                analyze.remove("=")
+        even_number = 0
+        keys = []
+        for key in analyze:
+            if even_number % 2 == 0:
+                keys.append(key)
+            even_number += 1
+        odd_number = 0
+        values = []
+        for value in analyze:
+            if odd_number % 2 != 0:
+                values.append(value)
+            odd_number += 1
+        zipped = zip(keys, values)
+        dictionary = dict(zipped)
+        dictionary[k] = new_value
+        # print(dictionary)
+        with open(self.file_path,"w") as file:
+            for ke,val in dictionary.items():
+                file.write(f"{ke} = {val}\n")
+
+confi = Configur_file()
+confi.read_file("C:\\Users\\PREMIER OMPUTER\\Desktop\\omid.txt")
+confi.setting("C:\\Users\\PREMIER OMPUTER\\Desktop\\omid.txt","username","emal")
+confi.setting("C:\\Users\\PREMIER OMPUTER\\Desktop\\omid.txt","host","guest")
+24:
+import sqlite3
+class Database:
+    def __init__(self, db_file):
+        self.db_file = db_file
+        self.connection = None
+        self.cursor = None
+        self.connect()
+
+    def connect(self):
+        try:
+            self.connection = sqlite3.connect(self.db_file)
+            self.cursor = self.connection.cursor()
+            print(f"Connected to SQLite database: {self.db_file}")
+        except sqlite3.Error as e:
+            print(f"Error connecting to SQLite database: {e}")
+
+    def execute_query(self, query):
+        try:
+            if self.connection:
+                self.cursor.execute(query)
+                self.connection.commit()
+                print("Query executed successfully")
+        except sqlite3.Error as e:
+            print(f"Error executing query: {e}")
+
+    def close(self):
+        if self.connection:
+            self.connection.close()
+            print("Database connection closed")
+
+# Example usage:
+db = Database('example.db')
+
+# Execute a query
+db.execute_query("CREATE TABLE IF NOT EXISTS users 
+(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)")
+
+# Insert data
+db.execute_query("INSERT INTO users (name, age) 
+VALUES ('Alice', 30)")
+
+# Close the database connection
+db.close()
+
+25:
+class Report:
+    def __init__(self,file_path):
+        self.file_path = file_path
+    def generate_report(self):
+        try:
+            with open(self.file_path,"r") as file:
+                data = file.read()
+                report = f"Report generated from file
+		 {self.file_path}:\n\n{data}"
+                return report
+        except FileNotFoundError:
+            return f"Error: File {self.file_path} not found."
+        except IOError as e:
+            return f"Error reading file {self.file_path}:{e}"
+report_gen = Report("C:\\Users\\PREMIER OMPUTER\\Desktop\\Omid.text")
+report = report_gen.generate_report()
+print(report)
+
+26:
+class Ticket:
+    def __init__(self,movie_name,seat_number,price):
+        self.movie_name = movie_name
+        self.seat_number = seat_number
+        self.price = price
+    def disply_details(self):
+        print("Movie Name:",self.movie_name,"\nSeat Number:",self.seat_number,
+"\nPrice:",str(self.price) + "$")
+    def apply_discount(self,discount_percentage):
+        if 0 <= discount_percentage <= 100:
+            discount_amount = self.price * (discount_percentage/100)
+            self.price -= discount_amount
+        else:
+            return "please chose discount percentage between 0 to 100"
+ticket1 = Ticket("inception","A12",15.00)
+ticket1.apply_discount(20)
+ticket1.disply_details()
+
+27:
+class Item:
+    def __init__(self,name,price):
+        self.name = name
+        self.price = price
+    def __str__(self):
+        return f"{self.name}: $ {self.price:.2f}"
+class ShoppingCart:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self,item):
+        self.items.append(item)
+    def remove_item(self,item_name):
+        for item in self.items:
+            if item.name == item_name:
+                self.items.remove(item)
+    def disply_item(self):
+        if not self.items:
+            print("The shopping cart is empty.")
+        else:
+            print("Shopping Cart Item:")
+            for item in self.items:
+                print(f"-{item}")
+item1 = Item("Apple",0.99)
+item2 = Item("Banana",0.59)
+item3 = Item("Milk",1.49)
+
+cart = ShoppingCart()
+cart.add_item(item1)
+cart.add_item(item2)
+cart.add_item(item3)
+cart.disply_item()
+cart.remove_item("Banana")
+cart.disply_item()
+cart.remove_item("orange")
+cart.disply_item()
+
+28:
+class Item:
+    def __init__(self,name,price):
+        self.name = name
+        self.price = price
+    def __str__(self):
+        return f"{self.name}: $ {self.price:.2f}"
+class Restaurant:
+    def __init__(self,name):
+        self.name = name
+        self.menu = []
+    def add_item(self,item):
+        self.menu.append(item)
+    def remove_item(self,item_name):
+        for item in self.menu:
+            if item.name == item_name:
+                self.menu.remove(item)
+                print(f"Removed {item_name} from the menu.")
+    def disply_menu(self):
+        print(f"Menu of {self.name}:")
+        for item in self.menu:
+            print(f"-{item}")
+item1 = Item("Pasta",8.99)
+item2 = Item("Pizza",12.50)
+item3 = Item("Salad",6.75)
+restaurant = Restaurant("Naseeb Restaurant")
+restaurant.add_item(item1)
+restaurant.add_item(item2)
+restaurant.add_item(item3)
+restaurant.disply_menu()
+restaurant.remove_item("Pizza")
+restaurant.disply_menu()
+
+29:
+class Person:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+    def __str__(self):
+        return f"Name: {self.name}, Age: {self.age}"
+class Flight:
+    def __init__(self, flight_number, destination):
+        self.flight_number = flight_number
+        self.destination = destination
+        self.passengers = []
+    def add_passenger(self,person):
+        self.passengers.append(person)
+    def remove_passenger(self,person_name):
+        for person in self.passengers:
+            if person.name == person_name:
+                self.passengers.remove(person)
+    def disply_passengers(self):
+        print(f"Passengers of flight {self.flight_number} to 
+		{self.destination}:")
+        for person in self.passengers:
+            print(f"-{person}")
+person1 = Person("Ahmad",20)
+person2 = Person("Omid",20)
+person3 = Person("Eqbal",27)
+flight = Fight("AB123","New York")
+flight.add_passenger(person1)
+flight.add_passenger(person2)
+flight.add_passenger(person3)
+flight.disply_passengers()
+flight.remove_passenger("Eqbal")
+flight.disply_passengers()
+
+30:
+class Room:
+    def __init__(self,room_number):
+        self.room_number = room_number
+        self.is_occupied = False
+
+    def __str__(self):
+        status = "Occupied" if self.is_occupied else "Available"
+        return f"Room {self.room_number}: {status}"
+class Hotel:
+    def __init__(self,name):
+        self.name = name
+        self.rooms = []
+    def add_room(self,room):
+        self.rooms.append(room)
+    def book_room(self,room_number):
+        for room in self.rooms:
+            if room.room_number == room_number:
+                if not room.is_occupied:
+                    room.is_occupied = True
+    def checkout_room(self,room_number):
+        for room in self.rooms:
+            if room.is_occupied:
+                room.is_occupied = False
+    def disply_rooms(self):
+        for room in self.rooms:
+            print(room)
+room1 = Room(101)
+room2 = Room(102)
+room3 = Room(103)
+
+hotel = Hotel("Grand Hotel")
+hotel.add_room(room1)
+hotel.add_room(room2)
+hotel.add_room(room3)
+hotel.disply_rooms()
+hotel.book_room(101)
+hotel.book_room(102)
+hotel.disply_rooms()
+hotel.checkout_room(101)
+hotel.checkout_room(102)
+hotel.disply_rooms()
+
+36:
+from tkinter import *
+class CounterApp:
+    def __init__(self,window):
+        self.counter = 0
+        self.label = Label(window,text="Conter: 0",font=("Helvetica",20))
+        self.label.pack(pady=20)
+        self.increment_button = Button(window,text="Increment",fg="green"
+	,width=15,font=("Arial",15),command=self.increment)
+        self.increment_button.pack(pady=10)
+        self.decrement_button = Button(window,text="Decrement",
+	width=15,fg="red",font=("Arial",15),command=self.decrement)
+        self.decrement_button.pack(pady=10)
+    def increment(self):
+        self.counter += 1
+        self.update_label()
+    def decrement(self):
+        self.counter -= 1
+        self.update_label()
+    def update_label(self):
+        self.check()
+        self.label.config(text=f"Counter: {self.counter}")
+    def check(self):
+        if self.counter < 0:
+            self.label.config(fg="red")
+        elif self.counter > 0:
+            self.label.config(fg="green")
+        else:
+            self.label.config(fg="black")
+if __name__ == "__main__":
+    window = Tk()
+    window.title("Counter App")
+    window.geometry("300x300")
+    app = CounterApp(window)
+    window.mainloop()
+
+37:
+from tkinter import *
+class ToDoApp:
+    def __init__(self,window):
+        self.entry = Entry(window)
+        self.entry.pack()
+        self.list = Listbox(window,width=30)
+        self.list.pack()
+        self.add_button = Button(window,text="ADD_TASK",width=12,
+	command=self.add_task)
+        self.add_button.pack()
+        self.remove_button = Button(window,text="REMOVE_TASK",
+	width=12,command=self.remove_task)
+        self.remove_button.pack()
+    def add_task(self):
+        if not self.entry.get() == "":
+            self.list.insert(END,self.entry.get())
+    def remove_task(self):
+        self.list.delete(END)
+if __name__ == "__main__":
+    window = Tk()
+    window.title("ToDoApp")
+    app = ToDoApp(window)
+    window.mainloop()
+
+38:
+import tkinter as tk
+
+
+class Calculator:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Calculator")
+        self.create_widgets()
+
+    def create_widgets(self):
+        # نمایشگر ماشین حساب
+        self.display = tk.Entry(self.root, font=("Arial", 24),
+	 borderwidth=1, relief="solid")
+        self.display.grid(row=0, column=0, columnspan=4,
+	 sticky="nsew")
+
+        # دکمه‌ها و جایگذاری آن‌ها در Grid
+        buttons = [
+            ('AC', 1, 0), ('()', 1, 1), ('%', 1, 2), ('÷', 1, 3),
+            ('7', 2, 0), ('8', 2, 1), ('9', 2, 2), ('×', 2, 3),
+            ('4', 3, 0), ('5', 3, 1), ('6', 3, 2), ('-', 3, 3),
+            ('1', 4, 0), ('2', 4, 1), ('3', 4, 2), ('+', 4, 3),
+            ('0', 5, 0), ('.', 5, 1), ('⌫', 5, 2), ('=', 5, 3)
+        ]
+
+        for (text, row, column) in buttons:
+            self.create_button(text, row, column)
+        for i in range(6):
+            self.root.grid_rowconfigure(i, weight=2)
+        for j in range(4):
+            self.root.grid_columnconfigure(j, weight=1)
+
+    def create_button(self, text, row, column):
+        button = tk.Button(self.root, text=text, font=("Arial", 18),
+	 command=lambda t=text: self.on_button_click(t))
+        button.grid(row=row, column=column, sticky="nsew")
+
+    def on_button_click(self, char):
+        if char == 'AC':
+            self.display.delete(0, tk.END)
+        elif char == '⌫':
+            current_text = self.display.get()
+            self.display.delete(0, tk.END)
+            self.display.insert(0, current_text[:-1])
+        elif char == '=':
+            try:
+                expression = self.display.get().replace('×', '*').
+		replace('÷', '/')
+                result = eval(expression)
+                self.display.delete(0, tk.END)
+                self.display.insert(0, result)
+            except Exception as e:
+                self.display.delete(0, tk.END)
+                self.display.insert(0, "Error")
+        else:
+            self.display.insert(tk.END, char)
+
+
+
+root = tk.Tk()
+
+
+calculator = Calculator(root)
+
+root.mainloop()
+39:
+import tkinter as tk
+import requests
+from tkinter import messagebox
+
+
+class WeatherApp:
+    def __init__(self, root):
+        self.root = root
+        self.root.title("Weather App")
+
+        self.api_key = "YOUR_API_KEY"  
+
+        # City label and entry
+        self.label_city = tk.Label(root, text="City:")
+        self.label_city.pack()
+
+        self.entry_city = tk.Entry(root)
+        self.entry_city.pack()
+
+        # Get Weather button
+        self.button_get_weather = tk.Button(root, text="Get Weather",
+	 command=self.get_weather)
+        self.button_get_weather.pack()
+
+        # Weather information display
+        self.label_weather_info = tk.Label(root, text="",
+	 font=("Helvetica", 12))
+        self.label_weather_info.pack()
+
+    def get_weather(self):
+        city = self.entry_city.get()
+        if city:
+            try:
+                url = f"http://api.openweathermap.org/data/2.5/weather?
+		q={city}&appid={self.api_key}&units=metric"
+                response = requests.get(url)
+                data = response.json()
+
+                if data["cod"] == 200:
+                    temp = data["main"]["temp"]
+                    weather = data["weather"][0]["description"]
+                    self.label_weather_info.config(text=f"Temperature: 
+		{temp}°C\nWeather: {weather}")
+                else:
+                    messagebox.showerror("Error", data["message"])
+            except Exception as e:
+                messagebox.showerror("Error", "Unable to get weather information")
+        else:
+            messagebox.showwarning("Warning", "Please enter a city name")
+
+
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = WeatherApp(root)
+    root.mainloop()

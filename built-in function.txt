@@ -1,0 +1,327 @@
+1:abs()
+number = float(input("Enter a number:"))
+absolut = abs(number)
+print(absolut)
+
+2:all()
+list = [1,3,5,7,9]
+odd_num = any(num % 2 != 0 for num in list)
+print(odd_num)
+
+3:any()
+even = [2,4,6,8,9]
+result = any(num % 2 != 0 for num in even)
+print(result)
+
+4:ascii()
+print(ascii('Hello!'))
+
+5:bin()
+print(bin(10))
+
+6:bool()
+value = int(input("Enter a number:"))
+boolean = bool(value)
+print(boolean)
+
+7:bytearray()
+byte_array = bytearray(b"Hello")
+print(byte_array)
+byte_array[0] = 65
+print(byte_array)
+
+8:bytes()
+byte_array = bytes(b"Hello")
+print(byte_array)
+
+9:chr()
+print(chr(65))
+
+10:callable()
+def function():
+    print("Hello!")
+function()
+class method:
+    def __call__(self):
+        print("Hello from my class")
+obj = method()
+print(callable(function))
+print(callable(obj))
+print(callable(int))
+print(callable(__call__))
+print(callable(10))
+
+11:class method
+class Myclass:
+    class_attribute = "salaam"
+    def class_method(cls):
+        print(cls.class_attribute)
+cls = Myclass()
+cls.class_method()
+
+12:compile
+code = '''
+def greet(name):
+    return "Hello," + name + "!"
+
+print(greet("Ahmad"))'''
+compiled_code = compile(code,filename='<string>',mode='exec')
+exec(compiled_code)
+
+13:complex
+print(complex(5))
+
+14:delattr
+class Myclass:
+    x = 40
+obj = Myclass()
+print("x value:",obj.x)
+delattr(obj,"x")
+print("not value in x",obj.x)
+
+15:dict
+dict = {'name':'mohammad omid','age':'20',}
+print(dict['name'])
+dict['gender'] = 'Male'
+print(dict)
+
+16:dir
+class myclass:
+    x = 5
+    def __int__(self,y):
+        self.y = y
+    def my_method(self):
+        pass
+print(dir(myclass))
+obj = myclass()
+print(dir(obj))
+
+17:divmod
+print(divmod(10,2))
+
+18:enumerate
+list = ('apple','banana','cherry',9)
+print(list)
+for index, value in enumerate(list):
+    print(index,value)
+
+19:eval
+x = 3
+y = 8
+z = "x + y"
+print(eval(z))
+
+20:exec
+code = '''
+def count(num):
+    for i in range(num):
+        print(i)
+count(5)'''
+exec(code)
+
+21:filter
+def is_even(x):
+    return x % 2 == 0
+numbers = [1,2,3,4,6,7,8,9,10]
+even_numbers = tuple(filter(is_even,numbers))
+print(even_numbers)
+
+def is_odd(n):
+    return n % 2 != 0
+num = int(input("Enter range of odd number:"))
+numbers = range(num)
+odd_num = list(filter(is_odd,numbers))
+print(odd_num)
+
+22:format
+name = "Mohammad Omid"
+father = "Fazl khoda"
+age = 20
+name_age = "My name is {} my father name is {}and I am {} years old.".format(name,father,age)
+print(name_age)
+
+23:frozenset
+noramal_set = {1,2,3,4,5}
+frozen_set = frozenset(noramal_set)
+print(frozen_set)
+noramal_set.pop()
+print(noramal_set)
+
+24:getattr
+class Person():
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+person = Person("mohammmad omid",20)
+name_value = getattr(person,"name")
+print(name_value)
+age_value = getattr(person,"age","Unknown")
+print(age_value)
+city_value = getattr(person,"city","Uknown")
+print(city_value)
+print(getattr(person,"name"))
+
+25:globals
+x = 10
+y = 20
+class func():
+    z = 30
+
+print(globals())
+
+26:hasattr
+class example:
+    a = 10
+    b = 20
+
+obj = example()
+
+
+27:hash
+list = ["name","omid","father name","fazl khoda"]
+for i in list:
+    print(i,hash(i))
+
+28:help
+print(help(len))
+
+29:hex
+print(hex(32),hex(16))
+
+30:id
+list = [1,2,3,4]
+print(id(list))
+
+31:isinstance
+class Person:
+    pass
+person = Person()
+print(isinstance(person,object))
+
+32:issubclass
+class Animal:
+    pass
+class dog(Animal):
+    pass
+class car:
+    pass
+print(issubclass(dog,Animal))
+print(issubclass(car,Animal))
+
+33:iter
+list = [1,2,3,4,5]
+iter1 = iter(list)
+print(next(iter1))
+print(next(iter1))
+print(next(iter1))
+
+34:len
+name = "mohammad omid"
+print(len(name))
+
+35:locals
+def function(self):
+    x = 10
+    y = 20
+    print(locals())
+function()
+
+36:map
+def square(x):
+    return x ** 2
+numbers = [1,2,3,4,5]
+result = map(square,numbers)
+print(list(result))
+
+37:max
+list = [3,4,56,7,8,9]
+print(max(list))
+
+38:min
+list = [36,54,7,568,76,8]
+print(min(list))
+
+39:memoryview
+data = bytes(range(5))
+view = memoryview(data)
+print(len(view))
+print(view[3])
+print(view[2:4]
+
+40:next
+list = [1,2,3,4,5]
+iter1 = iter(list)
+print(next(iter1,"Not found any value"))
+
+41:object
+class myclass(object):
+    def card(self,name,father_name):
+        self.name = name
+        self.father_name = father_name
+        print(name,father_name)
+
+my_obj = myclass()
+my_obj.card("mohammad omid","fazlkhoda")
+
+42:oct
+print(oct(-9))
+
+43:open
+file = open(r"C:\Users\PREMIER OMPUTER\Desktop\omid.py",'w+')
+file.write("in the name of allah")
+file.close()
+
+44:ord
+chr1,chr2 = "A","B"
+print(ord(chr1))
+print(ord(chr2))
+
+45:pow
+print(pow(2,3))
+
+46:range
+range = range(0,10,2)
+print(list(range))
+
+47:repr
+class point:
+    def __init__(self,x,y):
+        self.x = x
+        self.y = y
+    def __repr__(self):
+        return f'point({self.x},{self.y})'
+p = point(6,7)
+print(repr(p))
+
+48:reversed
+list1 = [1,2,3,4,5]
+rev = reversed(list1)
+print(list(rev))
+string1 = "dimo"
+reverse = reversed(string1)
+print(''.join(reverse))
+
+49:round
+print(round(3.1428,3))
+
+50:
+myset = {1,2,3,4,5,5,3}
+print(myset)
+set1 = {1,2,3,4}
+set2 = {3,4,5,6}
+union = set1 | set2
+intersection = set1 & set2
+print(set1)
+print(set2)
+print(union)
+print(intersection)
+
+51:setattr
+class Person:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+person = Person("",'')
+setattr(person,"name","ashraf")
+print(person.name)
+
